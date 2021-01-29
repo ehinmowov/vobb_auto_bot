@@ -74,7 +74,7 @@ def activate_ciu(un, pw):
     # driver.close()
 
 
-def activate_neu():
+def activate_neu(un, pw):
     options = Options()
     options.add_argument("user-agent= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, "
                          "like Gecko) Chrome/87.0.4280.141 Safari/537.36' ")
@@ -87,11 +87,13 @@ def activate_neu():
     driver.get('http://applicas.neu.edu.tr')
 
     username = driver.find_element_by_id('username')
-    username.send_keys('mckenwin.intl@gmail.com')
+    username.send_keys(un)
+    # test username is mckenwin.intl@gmail.com
     sleep(2)
 
     password = driver.find_element_by_id('inputPassword')
-    password.send_keys('GodwinBB30')
+    password.send_keys(pw)
+    # test password is GodwinBB30
 
     sleep(2)
 
