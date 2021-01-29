@@ -22,8 +22,10 @@ def activate_ciu(un, pw):
     driver.get('http://srs.ciu.edu.tr')
     username = driver.find_element_by_id('email')
     username.send_keys(un)
+    # test username is 1527
     password = driver.find_element_by_id('password')
     password.send_keys(pw)
+    # test password is gKc68Wj6
 
     cap = driver.find_element_by_id('captcha')
     base_cap = cap.screenshot_as_png
@@ -89,13 +91,13 @@ def activate_neu(un, pw):
     username = driver.find_element_by_id('username')
     username.send_keys(un)
     # test username is mckenwin.intl@gmail.com
-    sleep(2)
+    sleep(1)
 
     password = driver.find_element_by_id('inputPassword')
     password.send_keys(pw)
     # test password is GodwinBB30
 
-    sleep(2)
+    sleep(1)
 
     login = driver.find_element_by_xpath('/html/body/div[3]/div/form/button')
     login.click()
@@ -104,6 +106,3 @@ def activate_neu(un, pw):
     return verification.is_displayed()
 
     driver.close()
-
-
-activate_neu()

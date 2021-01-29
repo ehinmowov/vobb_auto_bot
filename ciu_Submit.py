@@ -22,8 +22,10 @@ def activate_ciu(un, pw):
     driver.get('http://srs.ciu.edu.tr')
     username = driver.find_element_by_id('email')
     username.send_keys(un)
+    # test username is 1527
     password = driver.find_element_by_id('password')
     password.send_keys(pw)
+    # test password is gKc68Wj6
 
     cap = driver.find_element_by_id('captcha')
     base_cap = cap.screenshot_as_png
@@ -66,13 +68,13 @@ def activate_ciu(un, pw):
     login = driver.find_element_by_id('submit-btn')
     login.click()
 
+    recruitment = driver.find_element_by_id('item-4')
+    recruitment.click()
+    sleep(5)
 
-def personal_info(fn, ln, gn, dob):
-    firstname = driver.find_element_by_xpath('//*[@id="m_wizard_form_step_1"]/div/div/div[1]/div[3]/div[1]/div/input')
-    firstname.send_keys(fn)
-    lastname = driver.find_element_by_xpath('//*[@id="m_wizard_form_step_1"]/div/div/div[1]/div[3]/div[1]/div/input')
-    lastname.send_keys(ln)
+    handles = driver.window_handles
 
+    driver.switch_to_window(handles[1])
 
 
 
