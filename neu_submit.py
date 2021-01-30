@@ -1,9 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import os
 import easyocr
@@ -14,8 +11,8 @@ global driver
 
 def access_neu():
     options = Options()
-    options.add_argument("user-agent= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, "
-                         "like Gecko) Chrome/87.0.4280.141 Safari/537.36' ")
+    options.add_argument("user-agent= 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, "
+                         "like Gecko) Chrome/60.0.3112.90 Safari/537.36' ")
     # options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     # options.add_argument("--headless")
     # options.add_argument("--disable-dev-shm-usage")
@@ -48,7 +45,6 @@ def access_neu():
 
     sleep(2)
 
-
     firstname = driver.find_element_by_xpath('//*[@id="Name"]')
     firstname.send_keys('Victor')
     middlename = driver.find_element_by_xpath('//*[@id="MiddleName"]')
@@ -56,17 +52,58 @@ def access_neu():
     lastname = driver.find_element_by_xpath('//*[@id="Surname"]')
     lastname.send_keys('Ehinmowo')
 
-    gender = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
-        (By.XPATH, "//*[@id='agentApplicationForm']/div/div[1]/div[4]/div/span/span")))
+    # gender = WebDriverWait(driver, 5).until(EC.element_to_be_clickable(
+    #     (By.XPATH, "//*[@id='agentApplicationForm']/div/div[1]/div[4]/div/span/span")))
+    # gender.click()
+    # gender_select = WebDriverWait(driver, 5).until(EC.element_to_be_clickable(
+    #     (By.XPATH, "'/html/body/div[4]/div/div[3]//ul//li[text()='Female']")))
+    # gender_select.click()
+    gn = 'Male'
+    gender = driver.find_element_by_xpath('//*[@id="agentApplicationForm"]/div/div[1]/div[4]/div/span/span/span[2]')
     gender.click()
-    gender_select = WebDriverWait(driver, 50).until(EC.element_to_be_clickable(
-        (By.XPATH, "//*[@id='agentApplicationForm']/div/div[1]/div[4]/div/span/span/span[1]/text('Female')")))
+    sleep(2)
+    gender_select = driver.find_element_by_xpath(f'//*[@id="Gender_listbox"]/li["{gn}"]')
     gender_select.click()
+    sleep(1)
 
+    date = driver.find_element_by_xpath('//*[@id="Birthdate"]')
+    date.clear()
+    date.send_keys('11011997')
+    sleep(1)
+
+    nationality = driver.find_element_by_xpath(
+        '//*[@id="agentApplicationForm"]/div/div[2]/div[2]/div/span/span/span[1]')
+    nationality.click()
+    sleep(2)
+    nation_select = driver.find_element_by_xpath('//*[@id="Nationality_listbox"]/li[3]')
+    nation_select.click()
+    sleep(1)
+
+    passport = driver.find_element_by_xpath('//*[@id="PassportNo"]')
+    passport.send_keys('xxxxxxxxxxx')
+    sleep(1)
+
+    status = driver.find_element_by_xpath('//*[@id="agentApplicationForm"]/div/div[2]/div[4]/div/span/span/span[1]')
+    status.click()
+    sleep(2)
+    status_select = driver.find_element_by_xpath('//*[@id="MaritalStatus_listbox"]/li[1]')
+    status_select.click()
+    sleep(1)
+
+    fathername = driver.find_element_by_xpath('//*[@id="FatherName"]')
+    fathername.send_keys('Ehinmowo')
+    sleep(1)
+
+    email = driver.find_element_by_xpath('//*[@id="Emergency2Email"]')
+    email.send_keys('lollytunez@gmail.com')
+
+    # /html/body/div[4]/div/div[3]/ul/li[2]
+    #
+    # '//*[@id="Gender_listbox"]/li[2]'
     # gender = driver.find_element_by_xpath('//*[@id="agentApplicationForm"]/div/div[1]/div[4]/div/span/span/span[1]')
     # drop_gender = Select(gender)
     # drop_gender.select_by_visible_text('Male')
-    sleep(20)
+    sleep(5)
 
     driver.close()
 
