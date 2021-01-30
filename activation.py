@@ -112,3 +112,6 @@ def activate_neu(un, pw):
     return verification.is_displayed()
 
     driver.close()
+
+
+

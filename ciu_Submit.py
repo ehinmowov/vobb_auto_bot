@@ -19,7 +19,7 @@ options = Options()
 driver = webdriver.Chrome('/Users/director/Desktop/uni-activation/chromedriver copy', options=options)
 
 
-def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, ct, cn, dg, pm):
+def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, cn, dg, pm):
     global next_page
     global program_level_input
     options = Options()
@@ -143,9 +143,9 @@ def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, ct, cn, dg, pm):
     mothers_name = driver.find_element_by_xpath('//*[@id="m_wizard_form_step_1"]/div/div/div[3]/div/div[2]/div/input')
     mothers_name.send_keys(fn)
     address = driver.find_element_by_xpath('//*[@id="m_wizard_form_step_1"]/div/div/div[5]/div[2]/div[1]/input')
-    address.send_keys(f'{ln} apt')
+    address.send_keys('CIU,mersin 10,haspolat lekfosa,North Cprus')
     city = driver.find_element_by_xpath('//*[@id="m_wizard_form_step_1"]/div/div/div[5]/div[2]/div[2]/div/input')
-    city.send_keys(ct)
+    city.send_keys('Lefkosa')
     country = driver.find_element_by_id('countrySelect')
     drop_country = Select(country)
     drop_country.select_by_visible_text(cn)
