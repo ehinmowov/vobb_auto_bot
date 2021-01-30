@@ -67,13 +67,19 @@ def activate_ciu(un, pw):
 
     login = driver.find_element_by_id('submit-btn')
     login.click()
+    sleep(5)
 
-    verification = driver.find_element_by_id('item-4')
-    return verification.is_displayed()
+    try:
+        verification = driver.find_element_by_id('item-4')
+        return verification.is_displayed()
+    except:
+        driver.quit()
+        sleep(1)
+        activate_ciu()
 
-    # sleep(10)
+    sleep(10)
 
-    # driver.close()
+    driver.quit()
 
 
 def activate_neu(un, pw):
