@@ -20,6 +20,7 @@ driver = webdriver.Chrome('/Users/director/Desktop/uni-activation/chromedriver c
 
 
 def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, ct, cn, dg, pm):
+    global next_page
     global program_level_input
     options = Options()
     options.add_argument("user-agent= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, "
@@ -169,7 +170,7 @@ def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, ct, cn, dg, pm):
     drop_degree.select_by_visible_text(dg)
 
     if dg == 'International Transfer':
-        program_level_input = 1
+        program_level_input = 2
     elif dg == 'International Undergraduate':
         program_level_input = 2
     elif dg == 'International Master':
@@ -184,7 +185,7 @@ def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, ct, cn, dg, pm):
                                                  '2]/div/div/div/div[4]/div[1]/div/select')
     drop_program_level = Select(program_level)
     drop_program_level.select_by_index(program_level_input)
-    sleep(2)
+    sleep(5)
     program = driver.find_element_by_name('program')
     drop_program = Select(program)
     drop_program.select_by_visible_text(pm)
