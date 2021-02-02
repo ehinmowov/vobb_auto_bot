@@ -18,8 +18,23 @@ options = Options()
 #
 driver = webdriver.Chrome('/Users/director/Desktop/uni-activation/chromedriver copy', options=options)
 
+# I have added these values for test cases
+un = '1527'
+pw = 'gKc68Wj6'
+fn = 'Merve'
+ln = 'Morkoc'
+mn = 'nur'
+gn = 'Female'
+dob = 11011997
+pn = 'xxxxxxxxxxx'
+em = 'lollytunez@gmail.com'
+pob = 'Ore'
+cn = 'NIGERIA'
+dg = 'International Undergraduate'
+pm = 'Architecture'
 
-def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, cn, dg, pm):
+def access_ciu(un, pw, fn, ln, mn, gn, dob, pn, em, pob, cn, dg, pm):
+
     global next_page
     global program_level_input
     options = Options()
@@ -116,7 +131,7 @@ def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, cn, dg, pm):
     firstname.send_keys(fn)
     middlename = driver.find_element_by_xpath('/html/body/div[1]/div/div/div/div/div[2]/div[3]/form/div[1]/div['
                                               '1]/div/div/div[1]/div[3]/div[2]/div/input')
-    middlename.send_keys('none')
+    middlename.send_keys(mn)
     lastname = driver.find_element_by_xpath('//*[@id="m_wizard_form_step_1"]/div/div/div[1]/div[3]/div[3]/div/input')
     lastname.send_keys(ln)
     gender = driver.find_element_by_id('genderSelect')
@@ -199,11 +214,11 @@ def access_ciu(un, pw, fn, ln, gn, dob, pn, em, pob, cn, dg, pm):
     checkbox = driver.find_element_by_xpath('//*[@id="m_wizard_form_step_5"]/div/div/div[4]/div/div/label')
     checkbox.click()
 
-    finish = driver.find_element_by_xpath('//*[@id="m_form"]/div[2]/div/div/div[3]/a[1]')
-    finish.click()
+    # finish = driver.find_element_by_xpath('//*[@id="m_form"]/div[2]/div/div/div[3]/a[1]')
+    # finish.click()
 
 
     sleep(10)
 
 
-
+access_ciu(un, pw, fn, ln, mn, gn, dob, pn, em, pob, cn, dg, pm)
